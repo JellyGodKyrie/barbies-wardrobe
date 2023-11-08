@@ -72,6 +72,7 @@ class Clothing {
 }
 
 const birkin = new Clothing('Birkin Bag', 'Hermes', 'purple', 'bag', 'lg', 15470 )
+const redBottoms = new Clothing('Red Bottoms', 'Christisan Louboutin', 'black', 'shoes', '6', 3000 )
 
 
 
@@ -93,7 +94,7 @@ barbie.render = () => {
             return `<li>
             ${barbie.name} has a ${item.color} 
             ${item.name} made by ${item.designer}
-            that is worth ${item.price} in size 
+            that is worth $${item.price} in size 
             ${item.size} 
             </li>`
         })).join('')
@@ -129,5 +130,17 @@ workButton.addEventListener('click', ()=>{
     // the object control the information that is visible to us on the screen
     // I want to re-render the content so that i can see the updated information in the browser
     barbie.render();
+})
+
+const redBottomsButton = document.getElementById('red-bottoms');
+
+redBottomsButton.addEventListener('click', () => {
+    if(barbie.wallet >= redBottoms.price){
+        barbie.wardrobe.push(redBottoms);
+        barbie.wallet -= redBottoms.price;
+        barbie.render();
+    } else {
+        alert(`You don't have the facilities for that right now`);
+    }
 })
 

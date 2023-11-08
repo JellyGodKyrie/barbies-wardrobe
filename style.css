@@ -43,6 +43,10 @@ img {
   font-family: 'Montserrat', sans-serif;
 }
 
+#red-bottoms:hover {
+  background-color: red;;
+}
+
 #container {
   width:400px;
   height:200px;
