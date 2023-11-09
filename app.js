@@ -4,6 +4,7 @@ console.log('App is connected');
 const barbie = {
     name: 'Barbie',
     wardrobe: [],
+    portfolio: [],
     wallet: 0
 }
 
@@ -32,6 +33,14 @@ const careerDescriptions = [
     {
         name: 'influencer',
         description: 'talk about stuff on social media and people say wow and i get paid'
+    },
+    {
+        name: 'stripper',
+        description: 'well paid entertainment'
+    },
+    {
+        name: 'UX-Designer',
+        description: 'Software developers best friend or enemy'
     }
 ]
 const careerIncomes = [
@@ -41,7 +50,8 @@ const careerIncomes = [
  3850,
  4850,
  5850,
- 6850
+ 6850,
+ 500
 ];
 const careers = [];
 
@@ -71,12 +81,17 @@ class Clothing {
     }
 }
 
+class RealEstate {
+    constructor(name, cost){
+        this.name = name;
+        this.cost = cost;
+    }
+}
+
 const birkin = new Clothing('Birkin Bag', 'Hermes', 'purple', 'bag', 'lg', 15470 )
-const redBottoms = new Clothing('Red Bottoms', 'Christisan Louboutin', 'black', 'shoes', '6', 3000 )
-
-
-
-
+const chanel = new Clothing('Chanel bag', 'Chanel', 'black', 'bag', 'med', 35000 )
+const redBottoms = new Clothing('Red Bottoms', 'Christian Loboutin', 'black', 'shoes', '6', 3000)
+const house = new RealEstate('Malibu Condo', 50000)
 
 // Game Screen
 
@@ -94,16 +109,28 @@ barbie.render = () => {
             return `<li>
             ${barbie.name} has a ${item.color} 
             ${item.name} made by ${item.designer}
-            that is worth $${item.price} in size 
+            that is worth ${item.price} in size 
             ${item.size} 
             </li>`
         })).join('')
     }</ul>
     </div>
+    <div>
+    <h2>Real Estate portfolio contains:</h2>
+    <ul>${
+        barbie.portfolio.map((item => {
+            return `<li>
+            ${barbie.name} has a ${item.name} worth $${item.cost}.
+            </li>`
+        })).join('')
+    }
+    
+    </ul>
+    </div>
 `;
 }
 
-barbie.render()
+barbie.render();
 
 
 
@@ -129,18 +156,55 @@ workButton.addEventListener('click', ()=>{
     barbie.wallet += barbie.career.income; // WE updated the wllet that belongs to barbie so the object was changed
     // the object control the information that is visible to us on the screen
     // I want to re-render the content so that i can see the updated information in the browser
+    
+    if(barbie.portfolio.length > 0){
+        barbie.wallet += barbie.portfolio.length * 500
+    }
     barbie.render();
 })
 
-const redBottomsButton = document.getElementById('red-bottoms');
+const redBottomButton = document.getElementById('red-bottoms');
 
-redBottomsButton.addEventListener('click', () => {
+redBottomButton.addEventListener('click' , () => {
     if(barbie.wallet >= redBottoms.price){
         barbie.wardrobe.push(redBottoms);
         barbie.wallet -= redBottoms.price;
         barbie.render();
+        // WE updated the wardrobe that belongs to barbie so the object was changed
+    // the object control the information that is visible to us on the screen
+    // I want to re-render the content so that i can see the updated information in the browser
     } else {
-        alert(`You don't have the facilities for that right now`);
+        alert('Stop trippin you know you aint got it like that');
+    }
+
+})
+
+const chanelButton = document.getElementById('chanel');
+
+chanelButton.addEventListener('click' , () => {
+    if(barbie.wallet >= chanel.price){
+        barbie.wardrobe.push(chanel);
+        barbie.wallet -= chanel.price;
+        barbie.render();
+        // WE updated the wardrobe that belongs to barbie so the object was changed
+    // the object control the information that is visible to us on the screen
+    // I want to re-render the content so that i can see the updated information in the browser
+    } else {
+        alert('Stop trippin you know you aint got it like that');
     }
 })
 
+const houseButton = document.getElementById('house');
+
+houseButton.addEventListener('click', () => {
+    if(barbie.wallet >= house.cost){
+        barbie.portfolio.push(house);
+        barbie.wallet -= house.cost;
+        barbie.render();
+        // WE updated the wardrobe that belongs to barbie so the object was changed
+    // the object control the information that is visible to us on the screen
+    // I want to re-render the content so that i can see the updated information in the browser
+    } else {
+        alert('Stop trippin you know you aint got it like that');
+    }
+})
