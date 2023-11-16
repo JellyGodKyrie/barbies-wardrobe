@@ -109,7 +109,7 @@ const tesla = new Vehicle(2024, 'Tesla', 'Model S', 50000)
 // Game Screen
 
 barbie.el = document.getElementById('barbie');
-barbie.el2 = document.getElementById('barbie2')
+// barbie.el2 = document.getElementById('barbie2');
 
 
 barbie.render = () => {
@@ -272,3 +272,60 @@ sellButton.addEventListener('click', () => {
         barbie.render();
     }
 })
+
+// ADDING CAREEER CHANGE BUTTON
+const select = document.getElementById("career__change");
+
+
+// for(i = 0; i < careers.length; i++) {
+//     let car = careers[i];
+//     let el = document.createElement("careers");
+//     el.textContent = car;
+//     el.value = car;
+//     select.appendChild(el);
+// }
+
+select.addEventListener('click', () => {
+    for(let i = 0; i < careers.length; i++) {
+        let careerChoice = careers[i];
+        let el = document.createElement("careerChoice");
+        el.textContent = careerChoice;
+        el.value = careerChoice;
+        // select.appendChild(barbie2.el);
+    }
+})
+
+// dropdownBtn.addEventListener('click', () => {
+//     if (barbie.job.name[0]) {
+//         barbie.render = () => {
+//             barbie.el.innerHTML = `
+//             <h3>Career Change</h3>
+//             <ul>${barbie.job.name[1]}</ul>
+//             <ul>${barbie.job.name[2]}</ul>
+//             <ul>${barbie.job.name[3]}</ul>
+//             <ul>${barbie.job.name[4]}</ul>
+//             <ul>${barbie.job.name[5]}</ul>`
+//         }
+//     }
+//     barbie.render();
+// })
+
+
+// else if (barbie.job.name[1]){
+//     barbie.render = () => {
+//         barbie.el.innerHTML = `
+//         <h3>Career Change</h3>
+//         <ul>${barbie.job.name[0]}</ul>
+//         <ul>${barbie.job.name[2]}</ul>
+//         <ul>${barbie.job.name[3]}</ul>
+//         <ul>${barbie.job.name[4]}</ul>
+//         <ul>${barbie.job.name[5]}</ul>`
+//     }
+// }
+
+// const dropdownButton = document.querySelector('.dropdown-button');
+// const dropdownOptions = document.querySelector('.dropdown-options');
+//   dropdownButton.addEventListener('click', () => {
+//   dropdownOptions.style.display = dropdownOptions.style.display === 'none' ? 'block' : 'none';
+// });
+
