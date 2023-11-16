@@ -275,7 +275,11 @@ sellButton.addEventListener('click', () => {
 
 // ADDING CAREEER CHANGE BUTTON
 const select = document.getElementById("career__change");
-
+for (let i = 0; i < careers.length; i++) {
+    let option = document.createElement("option");
+    option.text = careers[i].name;
+    select.add(option);
+  }
 
 // for(i = 0; i < careers.length; i++) {
 //     let car = careers[i];
@@ -285,15 +289,22 @@ const select = document.getElementById("career__change");
 //     select.appendChild(el);
 // }
 
-select.addEventListener('click', () => {
-    for(let i = 0; i < careers.length; i++) {
-        let careerChoice = careers[i];
-        let el = document.createElement("careerChoice");
-        el.textContent = careerChoice;
-        el.value = careerChoice;
-        // select.appendChild(barbie2.el);
-    }
-})
+// select.addEventListener('click', () => {
+//     for(let i = 0; i < careers.length; i++) {
+//         let careerChoice = careers[i];
+//         let el = document.createElement("careerChoice");
+//         el.textContent = careerChoice;
+//         el.value = careerChoice;
+//         select.appendChild(barbie2.el);
+//     }
+// })
+
+// for (let i = 0; i < careers.length; i++) {
+//     let option = document.createElement("option");
+//     option.text = careers[i].name;
+//     select.add(option);
+//   }
+
 
 // dropdownBtn.addEventListener('click', () => {
 //     if (barbie.job.name[0]) {
@@ -328,4 +339,3 @@ select.addEventListener('click', () => {
 //   dropdownButton.addEventListener('click', () => {
 //   dropdownOptions.style.display = dropdownOptions.style.display === 'none' ? 'block' : 'none';
 // });
-
