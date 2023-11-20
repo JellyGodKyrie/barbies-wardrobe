@@ -273,13 +273,26 @@ sellButton.addEventListener('click', () => {
     }
 })
 
+const sellAssets = document.getElementById('')
+
+
+// -------------------------------------------------------------------------------------------------------------//
+
 // ADDING CAREEER CHANGE BUTTON
 const select = document.getElementById("career__change");
 for (let i = 0; i < careers.length; i++) {
     let option = document.createElement("option");
     option.text = careers[i].name;
     select.add(option);
-  }
+}
+
+select.addEventListener('change', (event) => {
+	const selectedCareer = careers.find(career => career.name === event.target.value);
+	barbie.career = selectedCareer;
+	barbie.render();
+})
+
+
 
 // for(i = 0; i < careers.length; i++) {
 //     let car = careers[i];
@@ -299,12 +312,6 @@ for (let i = 0; i < careers.length; i++) {
 //     }
 // })
 
-// for (let i = 0; i < careers.length; i++) {
-//     let option = document.createElement("option");
-//     option.text = careers[i].name;
-//     select.add(option);
-//   }
-
 
 // dropdownBtn.addEventListener('click', () => {
 //     if (barbie.job.name[0]) {
@@ -320,7 +327,6 @@ for (let i = 0; i < careers.length; i++) {
 //     }
 //     barbie.render();
 // })
-
 
 // else if (barbie.job.name[1]){
 //     barbie.render = () => {
