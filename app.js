@@ -10,6 +10,12 @@ const barbie = {
     wallet: 0
 }
 
+const ken = {
+    name: 'Ken',
+    wardrobe: [],
+    wallet: 0
+}
+
 class Career {
     constructor(name, description, income, id){
         this.name = name;
@@ -109,8 +115,10 @@ const tesla = new Vehicle(2024, 'Tesla', 'Model S', 50000)
 // Game Screen
 
 barbie.el = document.getElementById('barbie');
-// barbie.el2 = document.getElementById('barbie2');
+barbie.el2 = document.getElementById('barbie2');
 
+ken.el = document.getElementById("ken");
+ken.el2 = document.getElementById("ken2");
 
 barbie.render = () => {
     barbie.el.innerHTML = `
@@ -157,8 +165,26 @@ barbie.render = () => {
 
 barbie.render();
 
+ken.render = () => {
+    ken.el.innerHTML = `
+    <h1>${ken.name} Status</h1>
+    <h3> Currently ${ken.name} has $${ken.wallet} in their bank account</h3>
+    <div> <h2>Wardrobe Contains: </h2> 
+    <ul>${
+        ken.wardrobe.map((item => {
+            return `<li>
+            ${ken.name} has a ${item.color} 
+            ${item.name} made by ${item.designer}
+            that is worth ${item.price} in size 
+            ${item.size} 
+            </li>`
+        })).join('')
+    }</ul>
+    </div>
+`;
+}
 
-
+ken.render();
 
 const birkinButton = document.getElementById('birkin');
 
@@ -273,8 +299,6 @@ sellButton.addEventListener('click', () => {
     }
 })
 
-const sellAssets = document.getElementById('')
-
 
 // -------------------------------------------------------------------------------------------------------------//
 
@@ -292,56 +316,34 @@ select.addEventListener('change', (event) => {
 	barbie.render();
 })
 
+// // Find the container element that holds the wardrobe items
+// const container = document.getElementById('barbie');
 
-
-// for(i = 0; i < careers.length; i++) {
-//     let car = careers[i];
-//     let el = document.createElement("careers");
-//     el.textContent = car;
-//     el.value = car;
-//     select.appendChild(el);
-// }
-
-// select.addEventListener('click', () => {
-//     for(let i = 0; i < careers.length; i++) {
-//         let careerChoice = careers[i];
-//         let el = document.createElement("careerChoice");
-//         el.textContent = careerChoice;
-//         el.value = careerChoice;
-//         select.appendChild(barbie2.el);
-//     }
-// })
-
-
-// dropdownBtn.addEventListener('click', () => {
-//     if (barbie.job.name[0]) {
-//         barbie.render = () => {
-//             barbie.el.innerHTML = `
-//             <h3>Career Change</h3>
-//             <ul>${barbie.job.name[1]}</ul>
-//             <ul>${barbie.job.name[2]}</ul>
-//             <ul>${barbie.job.name[3]}</ul>
-//             <ul>${barbie.job.name[4]}</ul>
-//             <ul>${barbie.job.name[5]}</ul>`
-//         }
-//     }
+// // Loop through each wardrobe item
+// barbie.wardrobe.forEach(item => {
+//   // Create a button element
+//   const sellItem = document.createElement('button');
+//   sellItem.innerText = 'Sell';
+  
+//   // Add event listener to the sell button
+//   sellItem.addEventListener('click', () => {
+//     // Sell the item and update the wallet balance
+//     barbie.wallet += item.price;
+    
+//     // Render the transaction history
+//     barbie.render2 = () => {
+//       barbie.el.innerText += `Sell`;
+//     };
+//     barbie.render2();
+    
+//     // Remove the sold item from the wardrobe and render the updated wardrobe
+//     const index = barbie.wardrobe.indexOf(item);
+//     barbie.wardrobe.splice(index, 1);
 //     barbie.render();
-// })
-
-// else if (barbie.job.name[1]){
-//     barbie.render = () => {
-//         barbie.el.innerHTML = `
-//         <h3>Career Change</h3>
-//         <ul>${barbie.job.name[0]}</ul>
-//         <ul>${barbie.job.name[2]}</ul>
-//         <ul>${barbie.job.name[3]}</ul>
-//         <ul>${barbie.job.name[4]}</ul>
-//         <ul>${barbie.job.name[5]}</ul>`
-//     }
-// }
-
-// const dropdownButton = document.querySelector('.dropdown-button');
-// const dropdownOptions = document.querySelector('.dropdown-options');
-//   dropdownButton.addEventListener('click', () => {
-//   dropdownOptions.style.display = dropdownOptions.style.display === 'none' ? 'block' : 'none';
+//   });
+  
+//   // Append the sell button to the wardrobe item
+//   item.appendChild(sellItem);
 // });
+
+
